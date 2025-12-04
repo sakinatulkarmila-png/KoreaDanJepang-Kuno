@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz Sejarah Jepang & Korea Kuno — Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stage">
+    <!-- Decorative background (stylized placeholders; replace with licensed art) -->
+    <svg class="bg-illustration" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden>
+      <defs>
+        <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="var(--soft-blue)" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="var(--pastel-cream)" stop-opacity="0.85"/>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#sky)"/>
+      <!-- soft sumi-e mountain shapes -->
+      <g class="mountains" fill="var(--earthy-brown)" opacity="0.08">
+        <path d="M0,500 L200,300 L420,520 L640,320 L860,520 L1200,300 L1200,800 L0,800Z"/>
+      </g>
+      <!-- stylized torii + pagoda silhouettes -->
+      <g class="silhouettes" fill="var(--earthy-brown)" opacity="0.12">
+        <rect x="120" y="420" width="140" height="20" rx="6"/>
+        <rect x="150" y="320" width="20" height="120" rx="6"/>
+        <rect x="230" y="320" width="20" height="120" rx="6"/>
+        <g transform="translate(780,360)">
+          <rect x="0" y="0" width="90" height="8" rx="4"/>
+          <rect x="10" y="-18" width="70" height="8" rx="4"/>
+          <rect x="20" y="-34" width="50" height="8" rx="4"/>
+        </g>
+      </g>
+      <!-- floating clouds (will animate via CSS) -->
+      <g class="clouds" fill="white" opacity="0.9">
+        <ellipse class="cloud c1" cx="200" cy="110" rx="90" ry="28" fill="var(--pastel-cream)"/>
+        <ellipse class="cloud c2" cx="540" cy="80" rx="110" ry="34" fill="var(--pastel-cream)"/>
+        <ellipse class="cloud c3" cx="940" cy="130" rx="70" ry="22" fill="var(--pastel-cream)"/>
+      </g>
+      <!-- small decorative bamboo on right -->
+      <g class="bamboo" fill="none" stroke="var(--soft-mint)" stroke-width="6" opacity="0.9">
+        <path d="M1120 480 C1116 380 1060 260 1060 220" stroke-linecap="round"/>
+      </g>
+    </svg>
+
+    <main class="container">
+      <!-- Slide wrapper -->
+      <div id="slides" class="slides">
+
+        <!-- Slide 1: Intro / Name -->
+        <section class="slide active" data-slide="intro">
+          <div class="card">
+            <h1>Masukkan Nama Kamu untuk memulai Quiz Sejarah Jepang Kuno & Korea Kuno.</h1>
+            <p class="subtitle">Semangat, ingat kembali materi yang tadi di baca.</p>
+            <div class="input-row">
+              <input id="nameInput" type="text" placeholder="Nama kamu..." aria-label="Nama" />
+              <button id="startBtn" class="btn">Mulai</button>
+            </div>
+            <div class="decor-row">
+              <div class="icon bounce">🎎</div>
+              <div class="icon bounce delay">🏯</div>
+              <div class="icon bounce">🪔</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 2: Questions (rendered by JS) -->
+        <section class="slide" data-slide="questions">
+          <div class="card">
+            <div id="questionArea">
+              <!-- question content injected here -->
+            </div>
+            <div class="nav-row">
+              <button id="prevBtn" class="btn ghost">Sebelumnya</button>
+              <button id="nextBtn" class="btn">Selanjutnya</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 3: Result -->
+        <section class="slide" data-slide="result">
+          <div class="card">
+            <h2>Hasil Kamu</h2>
+            <div id="resultSummary" class="result-grid">
+              <!-- populated by JS -->
+            </div>
+            <div class="score-row">
+              <div class="score-box">
+                <div class="score-number" id="scoreNumber">0/10</div>
+                <div class="score-label">Skor</div>
+              </div>
+              <div id="badgeBox" class="badge-box">--</div>
+            </div>
+            <div class="actions">
+              <button id="restartBtn" class="btn ghost">Ulangi</button>
+              <button id="shareBtn" class="btn">Simpan & Bagikan</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
